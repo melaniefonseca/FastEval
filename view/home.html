@@ -1,90 +1,148 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8" />
-        <title>FastEval</title>
-        <link href="content/css/main.css" rel="stylesheet" type="text/css" media="screen" />
-        <link href="content/css/home.css" rel="stylesheet" type="text/css" media="screen" />
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FastEval</title>
+    
+    <link rel="stylesheet" href="content/css/normalize.css" />
+    <link rel="stylesheet" href="content/css/foundation.min.css" />
+    <link rel="stylesheet" href="content/css/main.css" />
 
-        <script type="text/javascript" src="content/js/jquery-1.12.1.min.js"></script>
-    </head>
-
-    <body>
-        <header>
-            <div>
-                <a href="index.php">
-                    <img src="content/img/Logo_FastEval.png" alt="FastEval" style="padding-top: 40px;"/>
-
-                    <div></div>
+  </head>
+  
+  <body>
+      <header>
+        <div class="row">
+          <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+              <li class="name">
+                <a href="#" class="logo">
+                  <h1>FastEval<span class="tld">.com</span></h1>
                 </a>
-            </div>
-            <nav id="nav-primary">
-                <ul>
-                    <li><a href="View/presentation.php" class="nav_link">PRESENTATION</a></li>
-                    <li> <a href="View/correction.php" class="nav_link">CORRECTION</a> </li>
-                                <li><a href="View/sujets.php" class="nav_link">SUJETS</a></li>
-                    <li><a href="View/statistiques.php" class="nav_link">STATISTIQUES</a></li>
-                    <li> <a href="View/parametre.php" class="nav_link">PARAMETRES</a> </li>
-                </ul>
-            </nav>
-        </header>
-        <div class="wrapper">
-            <div class="content home">
-                <div class="content-overlay">
-                    <div class="container container-main">
-                        <div class="home-title">
-                            <img src="content/img/Logo_FastEval_GT.png" alt="FastEval"/>
-                            <!--<h1 id="home-title-welcome">FastEval</h1>-->
-                        </div>
-                        <table>
-                            <tr>
-                                <td>
-                                    <div class="card">
-                                        <h2>Presentation</h2>
-                                        <p>
-                                            FastEval est un outil rapide qui permet de corriger de manière automatique des QCM...
-                                        </p>
-                                        <a href="View/presentation"><button class="button-submit">Voir la présentation</button></a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card">
-                                        <h2>Statistiques</h2>
-                                        <p>
-                                            FastEval propose également un outil de statistiques...
-                                        </p>
-                                        <a href="View/statistiques"><button class="button-submit">Voir les statistiques</button></a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card">
-                                        <h2>Paramétrage</h2>
-                                        <p>
-                                            FastEval est facilement paramétrable...
-                                        </p>
-                                        <a href="View/parametre"><button class="button-submit">Paramétrer</button></a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
+              </li>
+                <span class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></span>
+              </li>
+            </ul>  
+			
+            <section class="top-bar-section" >
+              <ul class="right">
+                <li><a href="View/presentation">PRESENTATION</a></li>
+                <li><a href="View/correction">CORRECTION</a></li>
+                <li><a href="View/sujets">SUJETS</a></li>
+                <li><a href="View/statistiques">STATISTIQUES</a></li>
+				<li><a href="View/parametre">PARAMETRES</a></li>
+              </ul>
+            </section>
+          </nav>
         </div>
-            <footer>
-                <nav>
-                    <ul>
-                        <li><a href="index.php">Accueil</a></li>
-                        <li><a href="View/planSite">Plan du site</a></li>
-                    </ul>
-                </nav>
-                <div id="credits">
-                    <p>
-                        Copyright &copy; 2019 FastEval<br />
-                        All rights reserved.
-                    </p>
-                </div>
-            </footer>
-        <script type="text/javascript" src="content/js/script.js"></script>
-    </body>
+      </header>
+ 
+    <section class="services" id="services">     
+
+      <div class="row">         
+		<div class="img_header">
+			<img src="content/img/Logo_FastEval_GT.png" alt="FastEval"/>
+		</div>
+        <h2 class="sub_title">Slogan</h2> 
+      </div>
+
+
+		<div class="row services_list" style="border-left-style: dotted;">
+				<div class="small-12 medium-3 large-3 columns">
+				<img src="content/img/icon_presentation.png" alt="" title="" class="serv_icon"/>
+				<h2 class="title">Présentation</h2>
+				<p>FastEval est un outil rapide qui permet de corriger de manière automatique des QCM...</p>
+				<div class="btn_holder">
+					<a href="View/presentation" class="btn_fancy">
+						<div class="solid_layer"></div>
+						<div class="border_layer"></div>
+						<div class="text_layer">Présentation</div>
+					</a>
+				</div>
+			</div>
+
+        <div class="small-12 medium-3 large-3 columns">
+			<img src="content/img/icon_correction.png" alt="" title="" class="serv_icon"/>
+			<h2 class="title">Correction</h2>
+			<p>Ruis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+			<div class="btn_holder">
+				<a href="View/correction" class="btn_fancy">
+				  <div class="solid_layer"></div>
+				  <div class="border_layer"></div>
+				  <div class="text_layer">Correction</div>
+				</a>
+			</div>
+		</div>
+
+        <div class="small-12 medium-3 large-3 columns">
+			<img src="content/img/icon_stats.png" alt="" title="" class="serv_icon"/>
+			<h2 class="title">Statistiques</h2>
+			<p>FastEval propose également un outil de statistiques...</p>
+			<div class="btn_holder">
+				<a href="View/statistiques" class="btn_fancy">
+				  <div class="solid_layer"></div>
+				  <div class="border_layer"></div>
+				  <div class="text_layer">Statistiques</div>
+				</a>
+			</div>
+        </div>
+
+        <div class="small-12 medium-3 large-3 columns">
+			<img src="content/img/icon_parametre.png" alt="" title="" class="serv_icon"/>
+			<h2 class="title">Paramétrages</h2>
+			<p>FastEval est facilement paramétrable...</p>
+			<div class="btn_holder">
+				<a href="View/parametre" class="btn_fancy">
+					<div class="solid_layer"></div>
+					<div class="border_layer"></div>
+					<div class="text_layer">Paramétrages</div>
+				</a>
+			</div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="row">
+        <div class="small-12 medium-4 large-4 columns">
+          <div class="copyrights">
+            <a class="logo" href="#">
+              <h2>FastEval<span class="tld">.com</span></h2>
+            </a>
+            <p>Copyright © 2019 FastEval - All rights reserved.</p>
+          </div>
+        </div>
+        <div class="small-12 medium-8 large-8 columns">
+          <div class="acces_details right">
+            <nav class="acces_footer">
+			
+              <ul class="no-bullet">
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="View/planSite">Plan du site</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+
+    <a href="#" class="btn_fancy" id="back_top">
+      <div class="solid_layer"></div>
+      <div class="border_layer"></div>
+      <div class="text_layer"><img src="content/img/top_arrow.png" alt="Haut" title="" class="top_arrow"></div>
+    </a>
+
+    <!--    Javascript Files    -->
+    <script type="text/javascript" src="content/js/jquery.js"></script>
+    <!--<script type="text/javascript" src="content/js/touchSwipe.min.js"></script>-->
+    <script type="text/javascript" src="content/js/easing.js"></script>
+    <script type="text/javascript" src="content/js/foundation.min.js"></script>
+    <script type="text/javascript" src="content/js/foundation/foundation.topbar.js"></script>
+    <script type="text/javascript" src="content/js/carouFredSel.js"></script>
+    <script type="text/javascript" src="content/js/scrollTo.js"></script>
+    <script type="text/javascript" src="content/js/main.js"></script>
+
+  </body>
 </html>
