@@ -1,18 +1,12 @@
 <?php
 include("header.html") ;
 ?>
-<div class="wrapper">
-    <div class="content home">
-         <div class="content-overlay">
-            <div class="container container-main">
-                <div class="home-title">
-                    <h1 id="home-title-welcome">Statistiques</h1>
-                </div>
-                        
-            </div>
-        </div>
-    </div>
-</div>
+ <section class="services" id="services"> 
+    <h1 class="home-title">Statistiques</h1>
+	<body>
+	
+	</body>
+</section>
 <?php
 include("footer.html") ;
 ?>

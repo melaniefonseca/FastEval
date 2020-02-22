@@ -1,45 +1,36 @@
 <?php
 include("header.html") ;
 ?>
-<div class="wrapper">
-    <div class="content home">
-         <div class="content-overlay">
-            <div class="container container-main">
-                <div class="home-title">
-                    <h1 id="home-title-welcome">Correction</h1><br>
+ <section class="services" id="services"> 
+    <h1 class="home-title">Correction</h1>
+	<body>
+        <form method="post" action="" style="text-align: center;">
+            <div class="bloc_correction">
+		<br><h2 class="title-text" style="text-decoration: underline; color: black;"> CHOIX DU SUJET : </h2>
+                <br><label style="font-weight: bold;"> Sélectionner un sujet déjà existant sur le site : </label><br>
+                <input type ="text" class="input_text" style="margin-left: 7%;" name ="sujet_site" value="" readonly="">
+		<input class="bouton_f_correction" type="button" value="Sélectionner"><br>
+		<label class="centre" style="font-weight: bold;"> OU </label>
+		<br> <label style="font-weight: bold;"> Importer un nouveau sujet : </label> 
+		<div class="centre_blocTexte">
+                    <br> <label > Libelle : </label> 
+                    <input type ="text" name ="libelle_sujet" value="" >
+                    <label > Fichier : </label> 
+                    <input type="file" name="nv_sujet" accept=".pdf" value="Sélectionner" multiple=""><br><br>
                 </div>
-                <body>
-                    <form method="post" action="" >
-                        <div class="bloc_correction">
-                            <br><h3 style="text-decoration: underline;"> CHOIX DU SUJET : </h3>
-                            <br><label > Sélectionner un sujet déjà existant sur le site : </label> 
-                            <input type ="text" name ="sujet_site" value="" readonly="">
-                            <input class="bouton_f_correction" type="button" value="Sélectionner"><br>
-                            <br><label class="centre" style="font-weight: bold;"> OU </label>
-                            <br> <label > Importer un nouveau sujet : </label> <br>
-                            <div class="centre_blocTexte">
-                                <br> <label > Libelle : </label> 
-                                <input type ="text" name ="libelle_sujet" value="" ><br>
-                                <br> <label > Fichier : </label> 
-                                <input type="file" name="nv_sujet" accept=".pdf" value="Sélectionner" multiple=""><br><br><br>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="bloc_correction">
-                            <br><h3 style="text-decoration: underline;"> IMPORTATION DES COPIES : </h3>
-                            <div class="centre_blocTexte">
-                                <br><label > Importer/Scanner la ou les copies : </label> 
-                                <input type="file" name="Import/scanne" accept="image/*" value="Importer/Scanner" capture multiple=""><br><br>
-                            </div>
-                        </div>
-                        <input class="bouton_valider_correction" type="submit" value="Valider" >
-                    </form>
-                </body>    
-                        
             </div>
-        </div>
-    </div>
-</div>
+            <br>
+            <div class="bloc_correction">
+                <br><h2 class="title-text" style="text-decoration: underline; color: black;"> IMPORTATION DES COPIES : </h2>
+                <div class="centre_blocTexte">
+                    <label style="font-weight: bold;"> Importer/Scanner la ou les copies : </label><br>
+                    <input type="file" name="Import/scanne" accept="image/*" value="Importer/Scanner" capture multiple=""><br><br>
+                </div>
+            </div>
+            <br><input class="bouton_valider" type="submit" value="Valider" >
+        </form>
+    </body>    
+</section>
 <?php
 include("footer.html") ;
 ?>
