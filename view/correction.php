@@ -4,7 +4,7 @@ include("header.html") ;
  <section class="services" id="services"> 
     <h1 class="home-title">Correction</h1>
 	<body>
-        <form method="post" action="" style="text-align: center;">
+        <form method="post" action="../model/CorrectionCopie.php" style="text-align: center;">
             <div class="bloc_correction">
 		<br><h2 class="title-text" style="text-decoration: underline; color: black;"> CHOIX DU SUJET : </h2>
                 <br><label style="font-weight: bold;"> Sélectionner un sujet déjà existant sur le site : </label><br>
@@ -16,7 +16,7 @@ include("header.html") ;
                     <br> <label > Libelle : </label> 
                     <input type ="text" name ="libelle_sujet" value="" >
                     <label > Fichier : </label> 
-                    <input type="file" name="nv_sujet" accept=".pdf" value="Sélectionner" multiple=""><br><br>
+                    <input type="file" name="nv_sujet" accept=".pdf" value="Sélectionner"><br><br>
                 </div>
             </div>
             <br>
