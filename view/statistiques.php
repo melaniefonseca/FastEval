@@ -5,7 +5,8 @@ require_once ("../include/PdoFastEval.php");
 
 $idevaluation = isset($_GET['ideval']) ? $_GET['ideval']:false;
 
-
+$pdo = PdoFastEval::getPdoFastEval();
+$ideval=$pdo->getID();
 ?>
 
  <section class="services" id="services"> 
@@ -20,9 +21,32 @@ $idevaluation = isset($_GET['ideval']) ? $_GET['ideval']:false;
 <div class="liste_statistiques">
 <form action='/FastEval/View/statistiques' method='get'>
 <select name='ideval' onchange='submit();return false;'>
-<option value='0'>--- Choisir ---</option>
-<option value='1'>Premier sujet</option>
-<option value='2'>Deuxieme sujet</option>
+
+ <?php 
+if ( $idevaluation == '') { ?>
+  <option value='0'>--- Choisir ---</option> 
+  <?php
+}
+else { ?>
+  <option value = '<?php print_r($idevaluation) ?>' > Evaluation  <?php print_r($idevaluation)  ?> </option> 
+  <?php
+}
+
+ ?>
+  
+<?php
+  for ($i = 0 ; $i < sizeof($ideval) ; $i++) { 
+    if ($ideval[$i][0]!=$idevaluation){
+      ?>
+        <option value = '<?php print_r($ideval[$i][0]) ?>' > Evaluation  <?php print_r($ideval[$i][0])  ?> </option>
+      <?php
+    }
+  }
+?>
+
+
+
+
 <br>
 </select>
 </form>
@@ -54,6 +78,7 @@ $note58 = $pdo->getNombresdeNoteEntre($idevaluation,5,8);
 $note912 = $pdo->getNombresdeNoteEntre($idevaluation,9,12);
 $note1316 = $pdo->getNombresdeNoteEntre($idevaluation,13,16);
 $note1720 = $pdo->getNombresdeNoteEntre($idevaluation,17,20);
+
 ?>
 
 
@@ -87,6 +112,7 @@ $note1720 = $pdo->getNombresdeNoteEntre($idevaluation,17,20);
           pieSliceText:'none',
           legend: {
             alignment: 'center',
+            position: 'bottom'
           }
         };
 
@@ -121,7 +147,7 @@ var data = google.visualization.arrayToDataTable([
         italic: true,
         fontSize: 12,
       },
-        width: 600,
+        width: 400,
         height: 400,
         bar: {groupWidth: "65%"},
         legend: { position: "none" },
@@ -137,6 +163,7 @@ chart.draw(view, options);
 
     }
   </script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 
 		<div class="bloc_statistiques">
@@ -169,8 +196,9 @@ chart.draw(view, options);
 
 			<br><label style="font-weight: bold;"> Note la plus haute :  <?php print_r($note_haute)  ?> </label><br>
 			<br><label style="font-weight: bold;"> Note la plus basse :  <?php print_r($note_basse) ?> </label> <br> 
+
 		
-<div class="columnchart">
+<div class="columnchart d-flex justify-content-center">
 
 <div id="columnchart_values" style="width: 1000px; height: 350px;"></div>
 </div>
