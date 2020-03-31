@@ -18,7 +18,7 @@ class PdoFastEval {
      * pour toutes les méthodes de la classe
      */				
 	 
- private function __construct(){
+    private function __construct(){
 		try {
         PdoFastEval::$monPdo = new PDO(PdoFastEval::$serveur.';'.PdoFastEval::$bdd, PdoFastEval::$user, PdoFastEval::$mdp); 
 		}
@@ -104,7 +104,7 @@ class PdoFastEval {
 
 
     public function getNombresdeNoteEntre($evaluation,$notebasse,$notehaute){
-        $sql="select count(p.note) AS nb from fasteval.note p where '$evaluation' = p.id_evaluation AND p.note >= '$notebasse' ".($notehaute==20 ? "AND p.note <= '$notehaute' ":"AND p.note < '$notehaute' ");
+        $sql="select count(p.note) AS nb from fasteval.note p where '$evaluation' = p.id_evaluation AND p.note >= '$notebasse' ".($notehaute==20 ? "AND p.note <= '$notehaute' ":"AND p.note <= '$notehaute' ");
         $res=PdoFastEval::$monPdo->query($sql);        
         $laLigne=$res->fetch();
         $valeur = $laLigne['nb'] ;    
@@ -134,29 +134,20 @@ class PdoFastEval {
         $res=PdoFastEval::$monPdo->query($sql);  
         $notes=$res->fetchAll();
 
- $nbnotes = count($notes);
+        $nbnotes = count($notes);
 
-if($nbnotes % 2 ==0)
-    {
-
-
- $indexmediane1 = floor($nbnotes/2)-1;
-  $indexmediane2 = $indexmediane1+1;;
-$mediane = ($notes[$indexmediane2]['note'] + $notes[$indexmediane1]['note'])/2;
-    }
-else
-{
-
- 
-  $indexmediane = floor($nbnotes/2);
-  
-  $mediane = $notes[$indexmediane]['note'];
-}
-
-
-
-        return $mediane;
-    }
+        if($nbnotes % 2 ==0) {
+             $indexmediane1 = floor($nbnotes/2)-1;
+             $indexmediane2 = $indexmediane1+1;;
+            $mediane = ($notes[$indexmediane2]['note'] + $notes[$indexmediane1]['note'])/2;
+         }               
+        else{
+             $indexmediane = floor($nbnotes/2); 
+             $mediane = $notes[$indexmediane]['note'];
+        }
+        
+         return $mediane;
+     }
 
 
     public function getNoteHaute($evaluation){
@@ -174,5 +165,13 @@ else
         $valeur = $laLigne['a'];    
         return $valeur;
     }
+
+    public function getiD(){
+        $sql="select distinct id_evaluation from fasteval.note";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetchAll();
+        return $laLigne;
+    }
    
+    
 }
