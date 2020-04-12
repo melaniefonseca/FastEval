@@ -54,6 +54,6 @@ include("header.html") ;
 			
     </body>                   
 </section>
-<?phps
+<?php
 include("footer.html") ;
 ?>
