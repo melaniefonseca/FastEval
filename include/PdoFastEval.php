@@ -227,11 +227,19 @@ class PdoFastEval {
         PdoFastEval::$monPdo->exec($req);   
     }
 
-   public function getLibelle(){
-        $sql="select sujet.libelle from fasteval.sujet";
+
+ public function getLibelle(){
+        $sql="select sujet.libelle from fasteval.sujet ";
         $res=PdoFastEval::$monPdo->query($sql);     
         $laLigne=$res->fetchAll();
         return $laLigne;
+    }
+   public function getLibelleById($id){
+        $sql="select sujet.libelle as a from fasteval.sujet where '$id'=id_sujet ";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;  
     }
 
        public function getIdSujet(){
@@ -249,6 +257,7 @@ class PdoFastEval {
         return $valeur;
     }
 
+
       public function insertSujet($id_sujet,$libelle,$chemin){
         $req ="insert into sujet(id_sujet,libelle, chemin) 
         values ('$id_sujet', '$libelle', '$chemin')";
@@ -262,6 +271,5 @@ class PdoFastEval {
         $valeur = $laLigne['a'];    
         return $valeur;   
     }
-   
     
 }

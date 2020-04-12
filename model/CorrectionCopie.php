@@ -15,7 +15,6 @@ if(isset($_FILES['Import/scanne'])){
     $file_tmp =$_FILES['Import/scanne']['tmp_name'];
     $file_type=$_FILES['Import/scanne']['type'];
 }
-var_dump($file_type." ".$file_name." ".$file_size." ".$file_tmp);
 
 //$sujet = $_POST['Import/scanne'];
 $lstCopie = "C:\wamp64\www\FastEval\script\sujet2.pdf";
