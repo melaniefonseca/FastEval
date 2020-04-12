@@ -1,23 +1,111 @@
-<?php
-include("header.html") ;
-?>
- <section class="services" id="services"> 
-    <h1 class="home-title">Plan du site</h1>
-	<body>
-            <div class="bloc_bareme" style="color: #fff;">	
-	    <p><B><a href='/FastEval/View/presentation' style="color: #fff;">Presentation</a></B></p>
-            <?php echo 'par ici Vous comprendrez tout ! ' ; ?> <br/><br/>
-            <p><B><a href='/FastEval/View/parametre' style="color: #fff;">Paramètres</a></B></p> 
-            <?php echo 'par ici : Saisissez votre barème et choisissez l emplacement de vos copies' ; ?><br/><br/>
-            <p><B><a href='/FastEval/View/correction' style="color: #fff;">Sujet</a></B></p>
-            <?php echo 'par ici : vous pourrez générer votre sujet d examen automatiquement ' ; ?> <br/><br/>
-            <p><B><a href='/FastEval/View/correction' style="color: #fff;">Correction</a></B></p>
-            <?php echo 'par ici : Corrigez vos copies automatiquement ' ; ?> <br/><br/>
-            <p><B><a href='/FastEval/View/presentation' style="color: #fff;">Statistiques</a></B></p>
-            <?php echo 'Vous voulez voir la meilleure note ? la plus faible des notes ? ou simplement la moyenne de votre classe ? c est par ici'  ; ?> <br/>  
-            </dov>
-            </body>
-</section>
-<?php
-include("footer.html") ;
-?>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FastEval</title>
+
+    <link rel="stylesheet" href="../content/css/normalize.css" />
+    <link rel="stylesheet" href="../content/css/foundation.min.css" />
+    <link rel="stylesheet" href="../content/css/main.css" />
+    <link rel="stylesheet" href="style1.css" />
+  </head>
+
+  <body>
+      <header>
+        <div class="row">
+          <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+              <li class="name">
+                <a href="#" class="logo">
+                  <h1>FastEval<span class="tld">.com</span></h1>
+                </a>
+              </li>
+                <span class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></span>
+              </li>
+            </ul>
+
+            <section class="top-bar-section" >
+              <ul class="right">
+                <li><a href="../View/presentation">PRESENTATION</a></li>
+                <li><a href="../View/correction">CORRECTION</a></li>
+                <li><a href="../View/sujets">SUJETS</a></li>
+                <li><a href="../View/statistiques">STATISTIQUES</a></li>
+				<li><a href="../View/parametre">PARAMETRES</a></li>
+              </ul>
+            </section>
+          </nav>
+        </div>
+      </header>
+
+
+
+
+
+
+
+
+
+
+      <div class="container">
+          <section class="section knowledge-base">
+            <center>
+            <h1><strong>Bienvenue sur le Plan du site FastEval </strong> </h1> <h2>Cet espace est dédié aux utilisateurs et visiteurs  de FastEval : <a href="#" target="_new">FastEval</a><p>&nbsp;</p></center>
+          <section class="categories blocks">
+            <ul class="blocks-list">
+
+
+                  <li class="blocks-item">
+                    <a href='/FastEval/View/presentation' class="blocks-item-link">
+                      <h4 class="blocks-item-title">Presentation</h4>
+                      <p class="blocks-item-description">Par ici Vous comprendrez tout !</p>
+                    </a>
+                  </li>
+
+
+
+                  <li class="blocks-item">
+                    <a href='/FastEval/View/parametre' class="blocks-item-link">
+                      <h4 class="blocks-item-title">Paramètres</h4>
+                      <p class="blocks-item-description">Par ici : Saisissez votre barème et choisissez l emplacement de vos copies</p>
+                    </a>
+                  </li>
+
+
+
+                  <li class="blocks-item">
+                    <a href='/FastEval/View/sujet' class="blocks-item-link">
+                      <h4 class="blocks-item-title">Sujet</h4>
+                      <p class="blocks-item-description">Par ici : vous pourrez générer votre sujet d examen automatiquement</p>
+                    </a>
+                  </li>
+
+
+
+                  <li class="blocks-item">
+                    <a href='/FastEval/View/correction' class="blocks-item-link">
+                      <h4 class="blocks-item-title">Correction</h4>
+                      <p class="blocks-item-description">Par ici : Corrigez vos copies automatiquement</p>
+                    </a>
+                  </li>
+
+
+
+
+
+
+                  <li class="blocks-item">
+                    <a href='/FastEval/View/statistiques' class="blocks-item-link">
+                      <h4 class="blocks-item-title">Statistiques</h4>
+                      <p class="blocks-item-description">  Vous voulez voir la meilleure note ? la plus faible des notes ? ou simplement la moyenne de votre classe ? c est par ici</p>
+                    </a>
+                  </li>
+
+
+            </ul>
+
+          </section>
+      </div>
+      <?php
+      include("footer.html") ;
+      ?>

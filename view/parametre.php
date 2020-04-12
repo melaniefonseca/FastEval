@@ -6,7 +6,7 @@ $pdo = PdoFastEval::getPdoFastEval();
 $bonne_reponse=$pdo->getBareme("bonne_reponse");
 $mauvaise_reponse=$pdo->getBareme("mauvaise_reponse");
 $absence_reponse=$pdo->getBareme("absence_reponse");
-$non_reconnaissance_reponse=$pdo->getBareme("non_reconnaissance_r");
+$non_reconnaissance_reponse=$pdo->getBareme("non_reconnaissance_reponse");
 $sujet=$pdo->getBareme("stockage_sujet");
 $copies=$pdo->getBareme("stockage_copies_corr");
 
