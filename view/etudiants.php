@@ -7,12 +7,12 @@ $id=$pdo->getIdPromotion();
 
 ?>
  <section class="services" id="services"> 
-     <h1 class="home-title">Etudiants</h1><br>
+     <h1 class="home-title">ETUDIANTS</h1><br>
     <body>
         <div class="bloc_correction">
-            <form action="../model/formEtudiant.php" method="post">
+            <form action="../model/formEtudiant.php" method="post" enctype="multipart/form-data">
             <br><h2 class="title-text" style="text-decoration: underline; color: black;"> ETUDIANT NOMINATIF/ANONYME  : </h2>
-            <select name='Anonyme'>
+                <select name='Anonyme'>
                 <option value="-1">Sélectionnez un type d'étudiants</option>
                 <option value="1">Anonyme</option>
                 <option value="0">Nominatif</option>
@@ -21,7 +21,12 @@ $id=$pdo->getIdPromotion();
                 </div>
                    <br><br> <div class="bloc_correction">
                  <br><h2 class="title-text" style="text-decoration: underline; color: black;"> FICHIER EXCEL  : </h2><br>
-                          <select name='idpromo'>
+                    <select name='AnonymeExcel'>
+                    <option value="-1">Sélectionnez un type d'étudiants</option>
+                    <option value="1">Anonyme</option>
+                    <option value="0">Nominatif</option>
+                     </select><br><br>
+                    <select name='idpromo'>
                     <option value="-1">Choisissez la promotion </option>
                     <?php
                     for ($i = 0 ; $i < sizeof($id) ; $i++) { 
@@ -34,10 +39,10 @@ $id=$pdo->getIdPromotion();
                    ?>
                 </select>
 
-                             <label > Fichier : </label> <br>
-                             <input type="file" name="fichierxls" id="fichierxls" accept=".xls" value="" multiple=""><br><br>
+                <label > Fichier : </label> <br>
+                <input type="file" name="fichierxls" id="fichierxls" accept=".xls" value=""><br><br>
 
-            <input class="bouton_valider" type="submit" name="xls" value="Créer les étudiants via un ficher xls" ><br><br>
+            <input class="bouton_valider" type="submit" name="xls" id="xls" value="Créer les étudiants via un ficher xls" ><br><br>
         </div> 
     </form>
         <br><br>

@@ -3,28 +3,47 @@
 require_once ("../include/PdoFastEval.php");
 require('../pdf/pdf.php');
 
+if(!empty($_POST['Valider'])) {
+    $libelleunique = "copies";
+    chdir('../script/');
+
+    if(isset($_FILES['Import/scanne'])){
+
+        $dossier = getcwd().'/';
+        $fichier = basename($_FILES['Import/scanne']['name']);
+
+        $fichierExiste = file_exists($dossier . $libelleunique.'.pdf');
+
+        if (!$fichierExiste) {
+            move_uploaded_file($_FILES['Import/scanne']['tmp_name'], $dossier . $libelleunique.'.pdf');
+            $chemin = getcwd() . "\\" . $libelleunique . ".pdf";
+        } 
+    }
+}
+unset($_FILES);
 
 $pdo = PdoFastEval::getPdoFastEval();
-$bonne_reponse=$pdo->getBareme("bonne_reponse");
-$mauvaise_reponse=$pdo->getBareme("mauvaise_reponse");
-$absence_reponse=$pdo->getBareme("absence_reponse");
-$non_reconnaissance_reponse=$pdo->getBareme("non_reconnaissance_reponse");
-
 $idSujet=$_POST['idsujet'];
-$lstCopie = $_POST['Import/scanne'];
-$dateEval=$_POST['dateEvaluation'];
-$typeEval=$_POST['CC_EX'];
+$lstCopie = "..\script\copies.pdf";
 $idpromotion=$_POST['idpromotion'];
-if($idSujet==-1 or $lstCopie=="" or $dateEval=="" or $typeEval==-1 or $idpromotion=="-1"){
-    include('../view/correction.php');
+$idEval=$pdo->getIdEvalByIdSujet($idSujet);
+$typeEval=$pdo->getTypeEvalByIDEval($idEval);
+//recuperer dans bareme en fonction de l'evaluation
+$bonne_reponse=$pdo->getBaremeBonneRepByIDEvaluation($idEval);
+$mauvaise_reponse=$pdo->getBaremeMauvaiseRepByIDEvaluation($idEval);
+$absence_reponse=$pdo->getBaremeAbsencesRepByIDEvaluation($idEval);
+$non_reconnaissance_reponse=$pdo->getBaremeNonRecoRepByIDEvaluation($idEval);
 
+
+if($idSujet==-1 or $idpromotion=="-1"){
+    include('../view/correction.php');
 }else{
-    $pdo->insertBareme($bonne_reponse, $mauvaise_reponse, $absence_reponse, $non_reconnaissance_reponse);
-    $id_bareme=$pdo->getMaxBareme();
-    $nbEtudiant=0;
-    $pdo->insertEvaluation($typeEval, $nbEtudiant, $dateEval, $idSujet,$id_bareme);
-    $idEval=$pdo->getMaxEvaluation();
-    $lstCopie = "C:\wamp64\www\FastEval\script\sujet2.pdf";
+    //$pdo->insertBareme($bonne_reponse, $mauvaise_reponse, $absence_reponse, $non_reconnaissance_reponse);
+    //$id_bareme=$pdo->getMaxBareme();
+    //$nbEtudiant=0;
+    //$pdo->insertEvaluation($typeEval, $nbEtudiant, $dateEval, $idSujet,$id_bareme);
+    //$idEval=$pdo->getMaxEvaluation();
+    //$lstCopie = "C:\wamp64\www\FastEval\script\sujet2.pdf";
     $cheminImg="../script/imgSujet";
     exec('C:\Users\melan\AppData\Local\Programs\Python\Python38\python C:\wamp64\www\FastEval\script\pdfToImg.py '.$lstCopie.' '.$cheminImg.' 2>&1',$rep);
     //print_r($rep);
@@ -59,7 +78,7 @@ if($idSujet==-1 or $lstCopie=="" or $dateEval=="" or $typeEval==-1 or $idpromoti
                 //print_r((int)$numEtudiantScript[0]." ");
                 if($numEtudiant==0){
                     $numEtudiant=(int)$numEtudiantScript[0];
-                    $nbEtudiant+=1;
+                    //$nbEtudiant+=1;
                     //print_r($numEtudiant);
                 }
 
@@ -104,7 +123,7 @@ if($idSujet==-1 or $lstCopie=="" or $dateEval=="" or $typeEval==-1 or $idpromoti
                     else{
                         $tab=$tabCorrectionInit;
                         $idEtudiant="";
-                        $nbEtudiant+=1;
+                        //$nbEtudiant+=1;
                         if(strcmp($typeEval,"CC"==0)){
                             $idEtudiant=$pdo->getIdEtudiantByNumeroEtudiant($numEtudiant);
                             if($idEtudiant==null){
@@ -135,7 +154,7 @@ if($idSujet==-1 or $lstCopie=="" or $dateEval=="" or $typeEval==-1 or $idpromoti
         }
         closedir($dir);
         //print_r($nbEtudiant);
-        $pdo->updateNbEtudiantEvaluation($idEval, $nbEtudiant);
+        //$pdo->updateNbEtudiantEvaluation($idEval, $nbEtudiant);
         $pdf->Output("copieCorriger.pdf", "F");
         $pdf->Output();
     }

@@ -7,8 +7,6 @@ $bonne_reponse=$pdo->getBareme("bonne_reponse");
 $mauvaise_reponse=$pdo->getBareme("mauvaise_reponse");
 $absence_reponse=$pdo->getBareme("absence_reponse");
 $non_reconnaissance_reponse=$pdo->getBareme("non_reconnaissance_reponse");
-$sujet=$pdo->getBareme("stockage_sujet");
-$copies=$pdo->getBareme("stockage_copies_corr");
 
 ?>
 
@@ -34,20 +32,7 @@ $copies=$pdo->getBareme("stockage_copies_corr");
                 <input type ="number" step="any" name ="non_reconnaissance_reponse" value=<?php echo $non_reconnaissance_reponse ?>  required><br>
             </div>
 	</div>
-			<br>
-		<div class="bloc_parametres">
-			<br><h2 class="title-text" style="text-decoration: underline; color: black;"> CHEMINS : </h2>
-			<br><center><label style="font-weight: bold;"> Veuillez indiquer vos chemins</label></center><br>
-		
-           
-            <div class="bloc_bareme">
-                <label class="lib_imput"> Stockage des sujets : </label> 
-                <input type ="text" name ="stockage_sujet" value=<?php echo $sujet ?> required>
-                <label class="lib_imput"> Stockage des copies corrigées :</label> 
-                <input type ="text" name ="stockage_copies_corrige" value=<?php echo $copies ?> required>
-				<br>
-            </div>    
-		</div>
+		<br>
 		<br>
 		<br><center><input class="bouton_valider" type="submit" value="Valider" ></center>
                       

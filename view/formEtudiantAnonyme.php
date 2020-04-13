@@ -8,7 +8,7 @@ $pdo = PdoFastEval::getPdoFastEval();
 $id=$pdo->getIdPromotion()
 ?>
  <section class="services" id="services"> 
-    <h1 class="home-title">EtUDIANT ANONYME</h1>
+    <h1 class="home-title">ETUDIANT ANONYME</h1>
     <body>
     	<form method="post" action="../model/EnregistreEtudiantA.php" style="text-align: center;">
     		<div class ="bloc_correction"><br>
