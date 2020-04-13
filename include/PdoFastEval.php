@@ -39,7 +39,7 @@ class PdoFastEval {
     }
 
     public function getBareme($leLibelle){
-		$sql="select p.VALUE from fasteval.parametres p where NAME='$leLibelle'";
+        $sql="select p.VALUE from fasteval.parametres p where NAME='$leLibelle'";
         $res=PdoFastEval::$monPdo->query($sql);
 		$laLigne=$res->fetch();
         $valeur = $laLigne['VALUE'];
@@ -288,13 +288,13 @@ class PdoFastEval {
         $valeur = $laLigne['a'];    
         return $valeur;  
     }
-    public function insertEvaluation($type, $nb_etudiant, $date_evaluation, $id_sujet,$id_bareme){
-        $req="INSERT INTO evaluation( TYPE, NB_ETUDIANT, DATE_EVALUATION, ID_SUJET, ID_BAREME) VALUES ('$type','$nb_etudiant', '$date_evaluation',' $id_sujet','$id_bareme')";
+    public function insertEvaluation($type, $nb_etudiant, $date_evaluation,$id_bareme){
+        $req="INSERT INTO evaluation( TYPE, NB_ETUDIANT, DATE_EVALUATION, ID_BAREME) VALUES ('$type','$nb_etudiant', '$date_evaluation','$id_bareme')";
         PdoFastEval::$monPdo->exec($req); 
     }
     public function updateNbEtudiantEvaluation($idEvaluation, $nbEtudiant){
         $req="UPDATE evaluation set NB_ETUDIANT='$nbEtudiant' where id_evaluation='$idEvaluation')";
-        PdoFastEval::$monPdo->query($req); 
+        PdoFastEval::$monPdo->exec($req); 
     }
     public function getMaxEvaluation(){
         $sql="select max(evaluation.id_evaluation) AS a from fasteval.evaluation";
@@ -360,6 +360,48 @@ class PdoFastEval {
         $valeur = $laLigne['a'];    
         return $valeur;   
     }
-
+    public function getIdEvalByIdSujet($idsujet){
+        $sql="select id_evaluation AS a from fasteval.sujet where id_sujet='$idsujet'";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;   
+    }
+    public function getBaremeBonneRepByIDEvaluation($idevaluation){
+        $sql="select BONNE_REP AS a from EVALUATION, BAREME where id_evaluation='$idevaluation' and evaluation.id_bareme=bareme.id_bareme";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;   
+    }
+    public function getBaremeMauvaiseRepByIDEvaluation($idevaluation){
+        $sql="select MAUVAISE_REP AS a from EVALUATION, BAREME where id_evaluation='$idevaluation' and evaluation.id_bareme=bareme.id_bareme";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;   
+    }
+    public function getBaremeAbsencesRepByIDEvaluation($idevaluation){
+        $sql="select ABSENCE_REP AS a from EVALUATION, BAREME where id_evaluation='$idevaluation' and evaluation.id_bareme=bareme.id_bareme";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;   
+    }
+    public function getBaremeNonRecoRepByIDEvaluation($idevaluation){
+        $sql="select NON_RECONNAISSANCE_REP AS a from EVALUATION, BAREME where id_evaluation='$idevaluation' and evaluation.id_bareme=bareme.id_bareme";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;   
+    }
+    public function getTypeEvalByIDEval($idevaluation){
+        $sql="select TYPE AS a from EVALUATION where id_evaluation='$idevaluation'";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;   
+    }
+    
 
 }
