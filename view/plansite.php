@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="../content/css/main.css" />
     <link rel="stylesheet" href="style1.css" />
   </head>
-
-  <body>
-      <header>
+    <header>
+  
+      
         <div class="row">
           <nav class="top-bar" data-topbar role="navigation">
             <ul class="title-area">
@@ -38,19 +38,14 @@
         </div>
       </header>
 
-
-
-
-
-
-
-
-
-
+<body >
+  <div class ="bodyplan">
       <div class="container">
           <section class="section knowledge-base">
             <center>
-            <h1><strong>Bienvenue sur le Plan du site FastEval </strong> </h1> <h2>Cet espace est dédié aux utilisateurs et visiteurs  de FastEval : <a href="#" target="_new">FastEval</a><p>&nbsp;</p></center>
+            <h1><strong>Bienvenue sur le Plan du site FastEval </strong> </h1> 
+
+            <h2>Cet espace est dédié aux utilisateurs et visiteurs  de FastEval : <a class ="a1" href="#" target="_new">FastEval</a><p>&nbsp;</p></center>
           <section class="categories blocks">
             <ul class="blocks-list">
 
@@ -106,6 +101,7 @@
 
           </section>
       </div>
+    </div>
       <?php
       include("footer.html") ;
       ?>

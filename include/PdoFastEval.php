@@ -173,38 +173,6 @@ class PdoFastEval {
         return $laLigne;
     }
 
-      public function getIdEtudiantByNumeroAnonymat($anonymat){
-        $sql="select id_etudiant AS a from etudiant_anonyme where '$anonymat' = num_anonymat";
-        $res=PdoFastEval::$monPdo->query($sql);     
-        $laLigne=$res->fetch();
-        $valeur = $laLigne['a'];    
-        return $valeur;   
-    }
-
-     public function getIdEtudiantByNumeroEtudiant($etudiant){
-        $sql="select id_etudiant AS a from etudiant_nominatif where '$etudiant' = num_etudiant";
-        $res=PdoFastEval::$monPdo->query($sql);     
-        $laLigne=$res->fetch();
-        $valeur = $laLigne['a'];    
-        return $valeur;   
-    }
-
-        public function getIdPromotionByNumeroEtudiant($etudiant){
-        $sql="select id_promotion AS a from etudiant_nominatif where '$etudiant' = num_etudiant" ;
-        $res=PdoFastEval::$monPdo->query($sql);     
-        $laLigne=$res->fetch();
-        $valeur = $laLigne['a'];    
-        return $valeur;   
-    }
-
-         public function getIdPromotionByNumeroAnonymat($anonymat){
-        $sql="select id_promotion AS a from etudiant_anonyme where '$anonymat' = num_anonymat" ;
-        $res=PdoFastEval::$monPdo->query($sql);     
-        $laLigne=$res->fetch();
-        $valeur = $laLigne['a'];    
-        return $valeur;   
-    }
-
           public function getIdEvaluationByNumeroEtudiant($etudiant){
         $sql="select id_evaluation AS a from note,etudiant_nominatif where '$etudiant' = etudiant_nominatif.num_etudiant and note.id_etudiant=etudiant_nominatif.id_etudiant";
         $res=PdoFastEval::$monPdo->query($sql);     
@@ -271,5 +239,40 @@ class PdoFastEval {
         $valeur = $laLigne['a'];    
         return $valeur;   
     }
-    
+    public function insertNote($id_evaluation, $id_etudiant, $id_promotion, $note){
+        $req="INSERT INTO note (ID_EVALUATION, ID_ETUDIANT, ID_PROMOTION, NOTE) VALUES ('$id_evaluation','$id_etudiant','$id_promotion','$note')";
+        PdoFastEval::$monPdo->exec($req); 
+    }
+    public function getIdPromotionByEtudiant($id_etudiant){
+        $sql="select id_promotion AS a from etudiant where id_etudiant='$id_etudiant'" ;
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;   
+    }
+    public function getIdEtudiantByNumeroAnonymat($anonymat){
+        $sql="select id_etudiant AS a from etudiant_anonyme where num_anonymat='$anonymat'";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;   
+    }
+
+     public function getIdEtudiantByNumeroEtudiant($etudiant){
+        $sql="select id_etudiant AS a from etudiant_nominatif where num_etudiant='$etudiant'";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;   
+    }
+    public function insertEtudiantAnonyme($id_promotion,$numAnonymat){
+        $sql="Select `insert_etuAnonyme` ('$id_promotion','$numAnonymat')" ;
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+    }
+    public function insertEtudiantNominatif($id_promotion,$numEtudiant, $nom, $prenom){
+        $sql="Select `insert_etuNominatif` ('$id_promotion','$numEtudiant', '$nom', '$prenom')";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+    }
 }
