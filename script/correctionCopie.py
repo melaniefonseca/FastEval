@@ -18,30 +18,7 @@ import cv2
 from PIL import Image
 import pytesseract
 
-rep={}
-tab=[]
-lstrep=[]
-nbquest=0
-nbrep=0
-for i in range(len(tabrep)):
-	if tabrep[i] == ',':
-		tab.append(int(tabrep[i+1]))
-		nbrep+=1
-	elif tabrep[i] == ';':
-		nbquest+=1
-		lstrep.append(tab)
-		tab=[]
-		nbrep += 1
-	elif (tabrep[i-1] != ','):
-		tab.append(int(tabrep[i]))
-		#rep[i] = tab
 
-for k in range(0, nbquest):
-	rep[k] = lstrep[k]
-
-#Définition du corrigé qui mappe le numéro de la question à la bonne réponse
-#ANSWER_KEY = {0: [1,2], 1: [2], 2: [2], 3: [0], 4: [1], 5: [1,2], 6: [1], 7: [2], 8: [1,2], 9: [2,1], 10: [2], 11: [1], 12: [0]}
-ANSWER_KEY = rep
 #Convertion image en niveaux de gris et trouver les contours de l'examen
 image = cv2.imread(copie)
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -78,6 +55,7 @@ if len(docCnt)>0 :
     counter=0
     previousCounter=0
     tabNbQuestions=[]
+    nbQuestions=1
     # boucle sur le contours trouvé
     for c in cnts:
         (x, y, w, h) = cv2.boundingRect(c)
@@ -90,8 +68,35 @@ if len(docCnt)>0 :
                     tabNbQuestions.append(counter)
                 previousCounter=counter
                 counter=1
+                nbQuestions+=1
             previousY = y
             questionCnts.append(c)
+            
+    rep={}
+    tab=[]
+    lstrep=[]
+    nbquest=0
+    nbrep=0
+    for i in range(len(tabrep)):
+        if nbquest<=nbQuestions:
+            if tabrep[i] == ',':
+                tab.append(int(tabrep[i+1]))
+                nbrep+=1
+            elif tabrep[i] == ';':
+                nbquest+=1
+                lstrep.append(tab)
+                tab=[]
+                nbrep += 1
+            elif (tabrep[i-1] != ','):
+                tab.append(int(tabrep[i]))
+                #rep[i] = tab
+
+    for k in range(0, nbquest):
+        rep[k] = lstrep[k]
+
+    #Définition du corrigé qui mappe le numéro de la question à la bonne réponse
+    #ANSWER_KEY = {0: [1,2], 1: [2], 2: [2], 3: [0], 4: [1], 5: [1,2], 6: [1], 7: [2], 8: [1,2], 9: [2,1], 10: [2], 11: [1], 12: [0]}
+    ANSWER_KEY = rep
 
     # trie les contours de haut en bas
     questionCnts = contours.sort_contours(questionCnts,method="top-to-bottom")[0]
@@ -156,8 +161,8 @@ if len(docCnt)>0 :
 
 
     # calcul du score
-    correct=(correct/nbrep)*nbquest
-    score = str(correct.__round__ (2))+"/"+str(nbquest)
+    correct=(correct/nbrep)*nbQuestions
+    score = str(correct.__round__ (2))+"/"+str(nbQuestions)
     # affichage du score sur la feuille
     print(score)
     cv2.putText(paper, score, (10, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 255), 2)
