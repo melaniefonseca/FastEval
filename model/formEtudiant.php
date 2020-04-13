@@ -2,11 +2,12 @@
 require_once ("../include/PdoFastEval.php");
 include '../Excel//PHPExcel/IOFactory.php';
 $pdo = PdoFastEval::getPdoFastEval();
+
 $Anonyme = $_POST['Anonyme'];
 if($Anonyme==-1){
     include('../view/etudiants.php');
 }
-if(isset($_POST['form']) AND $_POST['form']=='Crée les étudiants via un formulaire'){
+if(isset($_POST['form']) AND $_POST['form']=='Créer les étudiants via un formulaire'){
     if($Anonyme==0){
         include('../view/formEtudiantNominatif.php');
     }
@@ -15,8 +16,8 @@ if(isset($_POST['form']) AND $_POST['form']=='Crée les étudiants via un formul
     }
 }
 else{
-    if(isset($_POST['xls']) AND $_POST['xls']=='Crée les étudiants via un ficher xls'){
-        
+    if(isset($_POST['xls']) AND $_POST['xls']=='Créer les étudiants via un ficher xls'){
+        $idpromotion=$_POST['idpromo'];
         $inputFileName = '../Excel/test.xls';
         try
         {
@@ -45,10 +46,10 @@ else{
                 $numEtudiant=trim($rowData[0]);
                 $prenom=trim($rowData[1]);
                 $nom=trim($rowData[2]);
-                $pdo->insertEtudiantNominatif(1,$numEtudiant,$prenom, $nom);
+                $pdo->insertEtudiantNominatif($idpromotion,$numEtudiant,$prenom, $nom);
             }else{
                 $numAnonymat=trim($rowData[0]);
-                $pdo->insertEtudiantAnonyme(1,$numAnonymat);
+                $pdo->insertEtudiantAnonyme($idpromotion,$numAnonymat);
                 
             }
         }
