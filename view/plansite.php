@@ -29,9 +29,11 @@
               <ul class="right">
                 <li><a href="../View/presentation">PRESENTATION</a></li>
                 <li><a href="../View/correction">CORRECTION</a></li>
+                <li><a href="../View/resultats">RESULTATS</a></li>
+                <li><a href="../View/etudiants">ETUDIANTS</a></li>
                 <li><a href="../View/sujets">SUJETS</a></li>
                 <li><a href="../View/statistiques">STATISTIQUES</a></li>
-				<li><a href="../View/parametre">PARAMETRES</a></li>
+		<li><a href="../View/parametre">PARAMETRES</a></li>
               </ul>
             </section>
           </nav>
@@ -62,7 +64,7 @@
                   <li class="blocks-item">
                     <a href='/FastEval/View/parametre' class="blocks-item-link">
                       <h4 class="blocks-item-title">Paramètres</h4>
-                      <p class="blocks-item-description">Par ici : Saisissez votre barème et choisissez l emplacement de vos copies</p>
+                      <p class="blocks-item-description">Saisissez votre barème et choisissez l emplacement de vos copies</p>
                     </a>
                   </li>
 
@@ -71,7 +73,7 @@
                   <li class="blocks-item">
                     <a href='/FastEval/View/sujet' class="blocks-item-link">
                       <h4 class="blocks-item-title">Sujet</h4>
-                      <p class="blocks-item-description">Par ici : vous pourrez générer votre sujet d examen automatiquement</p>
+                      <p class="blocks-item-description">Vous pourrez générer votre sujet d examen automatiquement</p>
                     </a>
                   </li>
 
@@ -80,7 +82,7 @@
                   <li class="blocks-item">
                     <a href='/FastEval/View/correction' class="blocks-item-link">
                       <h4 class="blocks-item-title">Correction</h4>
-                      <p class="blocks-item-description">Par ici : Corrigez vos copies automatiquement</p>
+                      <p class="blocks-item-description">Corrigez vos copies automatiquement</p>
                     </a>
                   </li>
 
@@ -92,7 +94,19 @@
                   <li class="blocks-item">
                     <a href='/FastEval/View/statistiques' class="blocks-item-link">
                       <h4 class="blocks-item-title">Statistiques</h4>
-                      <p class="blocks-item-description">  Vous voulez voir la meilleure note ? la plus faible des notes ? ou simplement la moyenne de votre classe ? c est par ici</p>
+                      <p class="blocks-item-description">  Vous voulez voir la meilleure note ? la plus faible des notes ? ou simplement la moyenne de votre classe ?</p>
+                    </a>
+                  </li>
+                  <li class="blocks-item">
+                    <a href='/FastEval/View/etudiants' class="blocks-item-link">
+                      <h4 class="blocks-item-title">Etudiants</h4>
+                      <p class="blocks-item-description">Toutes les informations relatives aux étudiants </p>
+                    </a>
+                  </li>
+                     <li class="blocks-item">
+                    <a href='/FastEval/View/resultats' class="blocks-item-link">
+                      <h4 class="blocks-item-title">Resultats</h4>
+                      <p class="blocks-item-description">Les résultats des évaluations </p>
                     </a>
                   </li>
 

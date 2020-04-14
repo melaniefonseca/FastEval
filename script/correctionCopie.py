@@ -18,9 +18,19 @@ import cv2
 from PIL import Image
 import pytesseract
 
+img2 = Image.open(copie)
+img_size = img2.size
+left = 0
+top = 0
+width = img_size[0]/2 +30
+height = img_size[1]
+box = (left, top, left+width, top+height)
+area = img2.crop(box)
+area.show()
+area.save("imgDiviser.png", "PNG")
 
 #Convertion image en niveaux de gris et trouver les contours de l'examen
-image = cv2.imread(copie)
+image = cv2.imread('imgDiviser.png')
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 blurred = cv2.GaussianBlur(gray, (5, 5), 0)
 edged = cv2.Canny(blurred, 75, 200)

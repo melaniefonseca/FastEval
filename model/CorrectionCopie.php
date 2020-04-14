@@ -28,6 +28,8 @@ $lstCopie = "..\script\copies.pdf";
 $idpromotion=$_POST['idpromotion'];
 $idEval=$pdo->getIdEvalByIdSujet($idSujet);
 $typeEval=$pdo->getTypeEvalByIDEval($idEval);
+$tab=$pdo->getCorrectionByIdSujet($idSujet);
+
 //recuperer dans bareme en fonction de l'evaluation
 $bonne_reponse=$pdo->getBaremeBonneRepByIDEvaluation($idEval);
 $mauvaise_reponse=$pdo->getBaremeMauvaiseRepByIDEvaluation($idEval);
@@ -47,7 +49,7 @@ if($idSujet==-1 or $idpromotion=="-1"){
     $cheminImg="../script/imgSujet";
     exec('C:\Users\melan\AppData\Local\Programs\Python\Python38\python C:\wamp64\www\FastEval\script\pdfToImg.py '.$lstCopie.' '.$cheminImg.' 2>&1',$rep);
     //print_r($rep);
-    $tab="0,2;2;2;0;1;1,2;1;2;1,2;2,1;2;1;0;";
+    //$tab="0,2;2;2;0;1;1,2;1;2;1,2;2,1;2;1;0;";
     $tabCorrectionInit=$tab;
     $nbQuestion=0;
     for ($i=0;$i<strlen($tab);$i++) {

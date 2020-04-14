@@ -480,5 +480,12 @@ class PdoFastEval {
         }
         return $anonymat;  
     }
+    public function getCorrectionByIdSujet($idSujet){
+        $sql="select sujet.correction AS a from fasteval.sujet where '$idSujet'=id_sujet";
+        $res=PdoFastEval::$monPdo->query($sql);        
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;
+    }
 
 }
