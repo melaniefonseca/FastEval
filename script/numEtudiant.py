@@ -44,12 +44,32 @@ question_contours, dictionary = find_counts(contours)
 question_contours = list(reversed(question_contours))
 cv2.drawContours(img, question_contours, -1, (0, 255, 0), 2)
 
+tabTemp=[]
+tabLigne=[]
+i=0
+for circle in question_contours:
+    if i!=9:
+        tabTemp.append(question_contours)
+    else:
+        tabLigne.append(tabTemp)
+        i=0
+    i=i+1
+
+nbcolonne=int(len(question_contours)/10)
+
+numetudiant = []
+for i in range(nbcolonne):
+    numetudiant.append(None)
+
 anonymat_num = ""
 i = 0
 num = "0"
 min = -1
 compteur = 0
-for circle in question_contours:
+indice=0
+
+for l in range(len(question_contours)):
+    circle = question_contours[l]
     mask = np.zeros(thresh.shape, dtype="uint8")
     cv2.drawContours(mask, [circle], -1, 255, -1)
     mask = cv2.bitwise_and(thresh, thresh, mask=mask)
@@ -57,14 +77,19 @@ for circle in question_contours:
     if min == -1 or actual < min:
         min = actual
         num = str(i)
+        indice = l
     if i == 9:
-        anonymat_num = anonymat_num + num
+        indiceColonne = indice//nbcolonne
+        numetudiant[int(num)] = indiceColonne
         num = "0"
         min = -1
         i = -1
     i = i + 1
 
-print(anonymat_num)
+numeroanonymat = ''
+for num in numetudiant :
+    numeroanonymat = numeroanonymat+str(num)
+print(numeroanonymat)
 
 #cv2.imwrite('./resources/test/warped1_colored.jpg', img)
 cv2.waitKey(0)
