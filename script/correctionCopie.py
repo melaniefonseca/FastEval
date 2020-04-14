@@ -49,7 +49,7 @@ if len(cnts) > 0:
 			docCnt = approx
 			break
             
-if len(docCnt)>0 :
+if docCnt.all()!=None :
     paper = four_point_transform(image, docCnt.reshape(4, 2))
     warped = four_point_transform(gray, docCnt.reshape(4, 2))
 
