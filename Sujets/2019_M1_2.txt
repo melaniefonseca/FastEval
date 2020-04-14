@@ -1,0 +1,111 @@
+# Exemple d'un fichier
+
+Title: QCM MIAGE
+Presentation: Veuillez répondre aux questions ci-dessous.
+ManualDuplex:1
+ShuffleQuestions:1
+Columns: 1
+
+*{th:'geographie',dif:'l'} Quelle est la capitale de la France ?
++ Paris
+- Bordeaux
+- Marseille
+
+*[ordered,horiz]{b=1,m=-1,p=0, th:'geographie,algorithmie',dif:'h'} Quelle est la capitale de la France ?
++ Paris
+- Lille
+- Ouagadougou
+
+
+*{th:'geographie',dif:'l'} Quelle est la capitale de la France ?
+- Marseille
++ Paris
+- Bordeaux
+- Rennes
+
+**[ordered,horiz,id=positifs]{th:'mathematiques',dif:'m'} Parmi les nombressssss suivants, lesquels sont positifs ?
+- -2
++ 2
++ 10
+*[ordered,horiz]{b=1,m=-1,p=0, th:'geographie,algorithmie',dif:'h'} Quelle est la capitale de la France ?
++ Paris
+- Lille
+- Ouagadougou
+
+
+**[ordered,horiz,id=positifs]{th:'mathematiques',dif:'m'} Parmi les nombressssss suivants, lesquels sont positifs ?
+- -2
++ 2
++ 10
+
+
+*[ordered,horiz]{b=1,m=-1,p=0, th:'geographie,algorithmie',dif:'h'} Quelle est la capitale de la France ?
++ Paris
+- Lille
+- Ouagadougou
+
+
+** Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs ?
++ 10
+- -52
++ 2
+
+**[ordered,horiz,id=positifs]{th:'mathematiques',dif:'m'} Parmi les nombres suivants,
+lesquels sont positifs ?
+- 2
++ 2
++ 10
+
+
+*{th:'developpement,algorithmie',dif:'h'} Qu'est-ce que le code suivant fait ?
+[verbatim]
+main( )
+{
+	printf("hello, world\n");
+}
+[/verbatim]
+
++ [| hello, world |]
+- [| world |]
+- [| hello |]
+
+*[ordered,horiz]{b=1,m=-1,p=0, th:'geographie,algorithmie',dif:'h'} Quelle est la capitale de la France ?
++ Paris
+- Lille
+- Ouagadougou
+
+
+** Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs ?
++ 10
++ 2
+- -52
+
+**[ordered,horiz,id=positifs]{th:'mathematiques',dif:'m'} Parmi les nombres suivants,
+lesquels sont positifs ?
+- 2
++ 2
++ 10
+
+
+*{th:'developpement,algorithmie',dif:'h'} Qu'est-ce que le code suivant fait ?
+[verbatim]
+main( )
+{
+	printf("hello, world\n");
+}
+[/verbatim]
+
+- [| world |]
+- [| hello |]
++ [| hello, world |]
+
+*{th:'geographie',dif:'l'} Quelle est la capitale de la France ?
++ Paris
+- Bordeaux
+- Marseille
+
+** Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs Parmi les nombres suivants, lesquels sont positifs ?
++ 2
++ 10
+- -52
+

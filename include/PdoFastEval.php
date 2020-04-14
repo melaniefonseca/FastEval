@@ -173,7 +173,7 @@ class PdoFastEval {
         return $laLigne;
     }
 
-          public function getIdEvaluationByNumeroEtudiant($etudiant){
+    public function getIdEvaluationByNumeroEtudiant($etudiant){
         $sql="select id_evaluation AS a from note,etudiant_nominatif where '$etudiant' = etudiant_nominatif.num_etudiant and note.id_etudiant=etudiant_nominatif.id_etudiant";
         $res=PdoFastEval::$monPdo->query($sql);     
         $laLigne=$res->fetch();
@@ -201,35 +201,6 @@ class PdoFastEval {
         $res=PdoFastEval::$monPdo->query($sql);     
         $laLigne=$res->fetchAll();
         return $laLigne;
-    }
-   public function getLibelleById($id){
-        $sql="select sujet.libelle as a from fasteval.sujet where '$id'=id_sujet ";
-        $res=PdoFastEval::$monPdo->query($sql);     
-        $laLigne=$res->fetch();
-        $valeur = $laLigne['a'];    
-        return $valeur;  
-    }
-
-       public function getIdSujet(){
-        $sql="select distinct sujet.id_sujet from fasteval.sujet";
-        $res=PdoFastEval::$monPdo->query($sql);     
-        $laLigne=$res->fetchAll();
-        return $laLigne;
-    }
-
-    public function getNombresIdSujet(){
-        $sql="select count(id_sujet) AS nb from sujet";
-        $res=PdoFastEval::$monPdo->query($sql);        
-        $laLigne=$res->fetch();
-        $valeur = $laLigne['nb'];    
-        return $valeur;
-    }
-
-
-      public function insertSujet($id_sujet,$libelle,$chemin){
-        $req ="insert into sujet(id_sujet,libelle, chemin) 
-        values ('$id_sujet', '$libelle', '$chemin')";
-        PdoFastEval::$monPdo->exec($req);   
     }
 
     public function getMaxSujet(){
@@ -402,6 +373,112 @@ class PdoFastEval {
         $valeur = $laLigne['a'];    
         return $valeur;   
     }
+    public function getIdEvaluation(){
+        $sql="select distinct evaluation.id_evaluation from fasteval.evaluation";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetchAll();
+        return $laLigne;
+    }
     
+    public function ajouterCorrection($correction, $idSujet) {
+        $req = "update SUJET set SUJET.CORRECTION = '$correction'
+        where SUJET.ID_SUJET = '$idSujet'";
+        PdoFastEval::$monPdo->exec($req);	
+    }
+    
+    public function ajouterNumSujet($numSujet, $idSujet) {
+        $req = "update SUJET set SUJET.NUM_SUJET = '$numSujet'
+        where SUJET.ID_SUJET = '$idSujet'";
+        PdoFastEval::$monPdo->exec($req);	
+    }
+
+    public function insertSujet($libelle,$chemin, $idEvaluation){
+        $req ="insert into sujet(libelle, chemin, id_evaluation) 
+        values ('$libelle', '$chemin', '$idEvaluation')";
+        PdoFastEval::$monPdo->exec($req);   
+    }
+
+    public function getNumSujet($idSujet){
+        $sql="select sujet.num_sujet AS a from fasteval.sujet where '$idSujet'=id_sujet ";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;   
+    }
+
+    public function getMaxNumSujet(){
+        $sql="select max(sujet.num_sujet) AS a from fasteval.sujet";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;   
+    }
+        public function getLibelleEvaluationById($idEvaluation){
+        $sql="select evaluation.date_evaluation as a, evaluation.type as b from fasteval.evaluation where id_evaluation='$idEvaluation' ";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = date('d-m-Y', strtotime($laLigne['a']))." (".$laLigne['b'].")";    
+        return $valeur;  
+    }
+    public function getIdEvaluationByIdSujet($idSujet){
+        $sql="select sujet.id_evaluation as a from fasteval.sujet where '$idSujet' = sujet.id_sujet ";
+        $res=PdoFastEval::$monPdo->query($sql);    
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;
+    }
+    
+   public function getLibelleById($id){
+        $sql="select sujet.libelle as a from fasteval.sujet where '$id'=id_sujet ";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;  
+    }
+    
+       public function getIdSujet(){
+        $sql="select distinct sujet.id_sujet from fasteval.sujet";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetchAll();
+        return $laLigne;
+    }
+
+    public function getNombresIdSujet(){
+        $sql="select count(id_sujet) AS nb from sujet";
+        $res=PdoFastEval::$monPdo->query($sql);        
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['nb'];    
+        return $valeur;
+    }
+
+    public function getNombresSujetByIdEval($idEvaluation, $idSujet){
+        $sql="select count(id_sujet) AS nb from sujet where '$idEvaluation'=id_evaluation and correction!='' and '$idSujet'!=id_sujet ";
+        $res=PdoFastEval::$monPdo->query($sql);        
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['nb'];    
+        return $valeur;
+    }
+
+    public function getCheminSujet($idSujet){
+        $sql="select sujet.chemin AS a from fasteval.sujet where '$idSujet'=id_sujet";
+        $res=PdoFastEval::$monPdo->query($sql);        
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];    
+        return $valeur;
+    }
+    
+    public function getAnonymat($idEvaluation) {
+        $anonymat = true;
+        
+        $sql="select evaluation.type as a from fasteval.evaluation where '$idEvaluation'=id_evaluation ";
+        $res=PdoFastEval::$monPdo->query($sql);     
+        $laLigne=$res->fetch();
+        $valeur = $laLigne['a'];  
+        
+        if ($valeur == "CC") {
+            $anonymat = false;
+        }
+        return $anonymat;  
+    }
 
 }
