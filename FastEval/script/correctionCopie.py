@@ -7,7 +7,7 @@ absence_reponse = sys.argv[5]
 non_reconnaissance_reponse = sys.argv[6]
 cheminEnregistrement = sys.argv[7]
 from operator import itemgetter
-sys.path.append('c:/users/melan/appdata/local/programs/python/python38/lib/site-packages')
+#sys.path.append('c:/users/melan/appdata/local/programs/python/python38/lib/site-packages')
 from imutils.perspective import four_point_transform
 from imutils import contours
 import numpy as np
