@@ -71,10 +71,10 @@ if($idSujet==-1 or $idpromotion=="-1"){
                 $file="\\$file";
                 $cheminCopie=$copie.$file;
 
-                $cheminCopie=$copie."copie_4.jpeg";
+                //$cheminCopie=$copie."copie_4.jpeg";
 
-                $cheminCopie="C:\wamp64\www\FastEval\script\sujet(1)_004.jpg";
-
+                //$cheminCopie="C:\wamp64\www\FastEval\script\sujet(1)_004.jpg";
+                //$cheminCopie="..\script\sujet(1)_004.jpg";
                 $cheminImgNum="../script/NumEtudiant/numEtudiant.png";
                 exec('C:\Users\melan\AppData\Local\Programs\Python\Python38\python C:\wamp64\www\FastEval\script\numEtudiant.py '.$cheminCopie.' '.$cheminImgNum.' 2>&1', $numEtudiantScript);
                 //print_r((int)$numEtudiantScript[0]." ");
@@ -84,11 +84,11 @@ if($idSujet==-1 or $idpromotion=="-1"){
                     //print_r($numEtudiant);
                 }
 
-                $cheminCopie="..\script\sujet(1)_004.jpg";
+                
                 exec('C:\Users\melan\AppData\Local\Programs\Python\Python38\python C:\wamp64\www\FastEval\script\correctionCopie.py '.$tab.' '.$cheminCopie.' '.$bonne_reponse.' '.$mauvaise_reponse.' '.$absence_reponse.' '.$non_reconnaissance_reponse.' '.$cheminEnregistrement.' 2>&1', $reponse);
-                //print_r($reponse[0]);
-
-                if((int)$reponse[0]!=-1){
+                #print_r($reponse[0]);
+                #print(strlen($reponse[0]));
+                if((int)$reponse[0]!=-1 && strlen($reponse[0])<=10){
                     if($numEtudiantScript[0]==$numEtudiant && $questionCorriger!=$nbQuestion){
                         $j=0;
                         $noteString="";
