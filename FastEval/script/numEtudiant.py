@@ -1,7 +1,7 @@
 import sys
 copie = sys.argv[1]
 cheminImgNum = sys.argv[2]
-sys.path.append('c:/users/melan/appdata/local/programs/python/python38/lib/site-packages')
+#sys.path.append('c:/users/melan/appdata/local/programs/python/python38/lib/site-packages')
 import numpy as np
 import cv2
 from PIL import Image
