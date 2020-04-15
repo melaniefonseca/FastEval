@@ -2,7 +2,7 @@ import sys
 sujet = sys.argv[1]
 cheminImg = sys.argv[2]
 #print(sujet)
-sys.path.append('c:/users/melan/appdata/local/programs/python/python38/lib/site-packages')
+#sys.path.append('c:/users/melan/appdata/local/programs/python/python38/lib/site-packages')
 from wand.image import Image
 import shutil, os
 
